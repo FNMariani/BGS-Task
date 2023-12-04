@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4801986965523181301}
   - component: {fileID: 4801986965523181300}
+  - component: {fileID: 712788143}
   m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
@@ -84,6 +85,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &712788143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986965523181306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameRate: 6
+  SpriteLocation: Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png
+  spriteArray: []
+  northSprites: []
+  eastSprites: []
+  southSprites: []
+  westSprites: []
+  WalkSpritesQty: 6
+  NorthSpritesOffset: 40
+  EastSpritesOffset: 48
+  SouthSpritesOffset: 32
+  WestSpritesOffset: 56
 --- !u!1 &4801986965971979603
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4801986965971979602}
   - component: {fileID: 4801986965971979629}
+  - component: {fileID: 1850194785}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -168,6 +194,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1850194785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986965971979603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameRate: 6
+  SpriteLocation: Assets/Sprites/Player/char_a_p1/char_a_p1_0bas_humn_v01.png
+  spriteArray: []
+  northSprites: []
+  eastSprites: []
+  southSprites: []
+  westSprites: []
+  WalkSpritesQty: 6
+  NorthSpritesOffset: 40
+  EastSpritesOffset: 48
+  SouthSpritesOffset: 32
+  WestSpritesOffset: 56
 --- !u!1 &4801986966414658686
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4801986966414658681}
   - component: {fileID: 4801986966414658680}
+  - component: {fileID: 386664246}
   m_Layer: 0
   m_Name: Clothes
   m_TagString: Untagged
@@ -252,6 +303,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &386664246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986966414658686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameRate: 6
+  SpriteLocation: Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_boxr_v01.png
+  spriteArray: []
+  northSprites: []
+  eastSprites: []
+  southSprites: []
+  westSprites: []
+  WalkSpritesQty: 6
+  NorthSpritesOffset: 40
+  EastSpritesOffset: 48
+  SouthSpritesOffset: 32
+  WestSpritesOffset: 56
 --- !u!1 &4801986967434105312
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4801986967434105315}
   - component: {fileID: 4801986967434105314}
+  - component: {fileID: 477030479}
   m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
@@ -336,6 +412,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &477030479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986967434105312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameRate: 6
+  SpriteLocation: Assets/Sprites/Player/char_a_p1/4har/char_a_p1_4har_bob1_v01.png
+  spriteArray: []
+  northSprites: []
+  eastSprites: []
+  southSprites: []
+  westSprites: []
+  WalkSpritesQty: 6
+  NorthSpritesOffset: 40
+  EastSpritesOffset: 48
+  SouthSpritesOffset: 32
+  WestSpritesOffset: 56
 --- !u!1 &4801986967604170157
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,9 +445,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4801986967604170156}
+  - component: {fileID: 143489955}
+  - component: {fileID: 143489954}
+  - component: {fileID: 143489956}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,3 +474,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &143489955
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986967604170157}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!61 &143489954
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986967604170157}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0037340745, y: 0.13069099}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4398958, y: 1.2613819}
+  m_EdgeRadius: 0
+--- !u!114 &143489956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986967604170157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37860c0142596f04d8cd22b2f0277246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 200
