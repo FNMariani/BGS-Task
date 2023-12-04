@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class SpriteUpdater : MonoBehaviour
 {
+    public PartType partType;
+
     private PlayerController playerController;
     private Vector2 playerDirectionRef;
     private SpriteRenderer spriteRenderer;
@@ -16,6 +20,7 @@ public class SpriteUpdater : MonoBehaviour
     public string SpriteLocation;
     public Sprite[] spriteArray;
 
+    public Sprite idleSprite;
     public List<Sprite> northSprites;
     public List<Sprite> eastSprites;
     public List<Sprite> southSprites;
@@ -47,6 +52,24 @@ public class SpriteUpdater : MonoBehaviour
     {
         playerDirectionRef = playerController.GetDirection();
         SetSprites();
+
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UpdateSpritesAtlas(PartType.Clothes, "Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_fstr_v04.png");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UpdateSpritesAtlas(PartType.Hat, "Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pnty_v04.png");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            UpdateSpritesAtlas(PartType.Clothes, "Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_boxr_v01.png");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            UpdateSpritesAtlas(PartType.Hat, "Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png");
+        }
     }
 
     void LoadSpritesWhenReady(AsyncOperationHandle<Sprite[]> handleToCheck, ref Sprite[] spriteArray, int spriteIndex)
@@ -55,6 +78,11 @@ public class SpriteUpdater : MonoBehaviour
         {
             spriteArray = handleToCheck.Result;
 
+            northSprites.Clear();
+            eastSprites.Clear();
+            southSprites.Clear();
+            westSprites.Clear();
+
             for (int i = 0; i < WalkSpritesQty; i++)
             {
                 northSprites.Add(spriteArray[i + NorthSpritesOffset]);
@@ -62,6 +90,8 @@ public class SpriteUpdater : MonoBehaviour
                 southSprites.Add(spriteArray[i + SouthSpritesOffset]);
                 westSprites.Add(spriteArray[i + WestSpritesOffset]);
             }
+
+            idleSprite = spriteArray[0];
         }
     }
 
@@ -96,8 +126,7 @@ public class SpriteUpdater : MonoBehaviour
         {
             selectedSprites = westSprites;
         }
-
-        if (direction.y > 0)
+        else if (direction.y > 0)
         {
             selectedSprites = northSprites;
         }
@@ -105,7 +134,21 @@ public class SpriteUpdater : MonoBehaviour
         {
             selectedSprites = southSprites;
         }
+        else
+        {
+            spriteRenderer.sprite = idleSprite;
+        }
 
         return selectedSprites;
+    }
+
+    void UpdateSpritesAtlas(PartType _partType, string SpriteLocation)
+    {
+
+        if(partType == _partType)
+        {
+            AsyncOperationHandle<Sprite[]> spriteHandle = Addressables.LoadAssetAsync<Sprite[]>(SpriteLocation);
+            spriteHandle.Completed += handle => LoadSpritesWhenReady(handle, ref spriteArray, 0);
+        }
     }
 }
