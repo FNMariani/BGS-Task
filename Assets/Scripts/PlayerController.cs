@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public Inventory playerInventory;
 
+    public GameObject inventoryPanel;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -18,6 +20,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ToggleInventoryPanel();
+        }
     }
 
     private void FixedUpdate()
@@ -43,6 +50,38 @@ public class PlayerController : MonoBehaviour
         {
             //Purchase failed
             Debug.LogWarning("Purchase failed.");
+        }
+    }
+
+    public void ToggleInventoryPanel()
+    {
+        //inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        if(inventoryPanel.activeSelf)
+        {
+            inventoryPanel.GetComponent<InventoryUIManager>().HideInventoryPanel();
+        }
+        else
+        {
+            inventoryPanel.GetComponent<InventoryUIManager>().ShowInventoryPanel();
+        }
+    }
+
+    public void Equip(GameItem item)
+    {
+        Debug.Log(item);
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            // Access each child by index
+            Transform childTransform = transform.GetChild(i);
+
+            // Do something with the child
+            Debug.Log("Child name: " + childTransform.name);
+            if(item.itemPartType == childTransform.GetComponent<SpriteUpdater>().partType)
+            {
+                childTransform.GetComponent<SpriteUpdater>().UpdateSpritesAtlas(item.itemPartType, item.itemSpriteLocation);
+            }
+            
         }
     }
 }

@@ -142,7 +142,7 @@ public class SpriteUpdater : MonoBehaviour
         return selectedSprites;
     }
 
-    void UpdateSpritesAtlas(PartType _partType, string SpriteLocation)
+    public void UpdateSpritesAtlas(PartType _partType, string SpriteLocation)
     {
 
         if(partType == _partType)

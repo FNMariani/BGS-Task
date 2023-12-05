@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
-public class ShopItemUI : MonoBehaviour
+public class ItemUI : MonoBehaviour
 {
     public Image itemIconImage;
     public TextMeshProUGUI itemNameText;

@@ -52,7 +52,7 @@ public class Shopkeeper : InteractableObject
         foreach (GameItem item in shopItems)
         {
             GameObject shopItemObject = Instantiate(shopItemPrefab, panelContent);
-            ShopItemUI shopItemUI = shopItemObject.GetComponent<ShopItemUI>();
+            ItemUI shopItemUI = shopItemObject.GetComponent<ItemUI>();
 
             if (shopItemUI != null)
             {

@@ -8,4 +8,5 @@ public class GameItem : ScriptableObject
     public int itemPrice;
     public string itemDescription;
     public string itemSpriteLocation;
+    public PartType itemPartType;
 }

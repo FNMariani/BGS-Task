@@ -17,3 +17,4 @@ MonoBehaviour:
   itemPrice: 250
   itemDescription: Fits with the sorcerer!
   itemSpriteLocation: Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_pfpn_v04.png
+  itemPartType: 1
