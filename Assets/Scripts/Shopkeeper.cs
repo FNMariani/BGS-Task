@@ -56,7 +56,7 @@ public class Shopkeeper : InteractableObject
 
             if (shopItemUI != null)
             {
-                shopItemUI.Initialize(uiManager, item);
+                shopItemUI.Initialize(uiManager, item, "Buy");
             }
 
             /*if (shopItemUI != null)
@@ -76,10 +76,18 @@ public class Shopkeeper : InteractableObject
 
     public void InteractWithPlayer(Inventory playerInventory, GameItem item)
     {
-        if (shopInventory.SellItem(item))
+        if (playerInventory.SellItem(item))
         {
             //Successful sale
-            playerInventory.BuyItem(item);
+            if (item.isEquipped)
+            {
+                GameObject player = GameObject.FindWithTag("Player");
+                if (player != null)
+                {
+                    player.GetComponent<PlayerController>().Unequip(item);
+                }
+            }
+            shopInventory.BuyItem(item);
         }
         else
         {

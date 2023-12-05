@@ -18,3 +18,4 @@ MonoBehaviour:
   itemDescription: Cool!
   itemSpriteLocation: Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pnty_v04.png
   itemPartType: 3
+  isEquipped: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4801986965523181301}
   - component: {fileID: 4801986965523181300}
   - component: {fileID: 712788143}
+  - component: {fileID: 1280961272878548399}
   m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
@@ -40,7 +41,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4801986965523181306}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1382673428, guid: 2f7ce22c451717b4fadc5e2805c6db36, type: 3}
+  m_Sprite: {fileID: -1948625972, guid: 1d8a8b07fb03f6448896fea69a1d1741, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  partType: 3
   frameRate: 6
-  SpriteLocation: Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png
+  SpriteLocation: Assets/Sprites/Player/char_a_p1/transparentSprites.png
   spriteArray: []
+  idleSprite: {fileID: 0}
   northSprites: []
   eastSprites: []
   southSprites: []
@@ -109,6 +112,19 @@ MonoBehaviour:
   EastSpritesOffset: 48
   SouthSpritesOffset: 32
   WestSpritesOffset: 56
+--- !u!114 &1280961272878548399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986965523181306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a9a67b87003064abeb46382ab0fd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEquipped: {fileID: 0}
 --- !u!1 &4801986965971979603
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +136,7 @@ GameObject:
   - component: {fileID: 4801986965971979602}
   - component: {fileID: 4801986965971979629}
   - component: {fileID: 1850194785}
+  - component: {fileID: 3857037367078497380}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -206,9 +223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  partType: 0
   frameRate: 6
   SpriteLocation: Assets/Sprites/Player/char_a_p1/char_a_p1_0bas_humn_v01.png
   spriteArray: []
+  idleSprite: {fileID: 0}
   northSprites: []
   eastSprites: []
   southSprites: []
@@ -218,6 +237,19 @@ MonoBehaviour:
   EastSpritesOffset: 48
   SouthSpritesOffset: 32
   WestSpritesOffset: 56
+--- !u!114 &3857037367078497380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986965971979603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a9a67b87003064abeb46382ab0fd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEquipped: {fileID: 0}
 --- !u!1 &4801986966414658686
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +261,7 @@ GameObject:
   - component: {fileID: 4801986966414658681}
   - component: {fileID: 4801986966414658680}
   - component: {fileID: 386664246}
+  - component: {fileID: 6817741113012073701}
   m_Layer: 0
   m_Name: Clothes
   m_TagString: Untagged
@@ -315,9 +348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  partType: 1
   frameRate: 6
   SpriteLocation: Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_boxr_v01.png
   spriteArray: []
+  idleSprite: {fileID: 0}
   northSprites: []
   eastSprites: []
   southSprites: []
@@ -327,6 +362,19 @@ MonoBehaviour:
   EastSpritesOffset: 48
   SouthSpritesOffset: 32
   WestSpritesOffset: 56
+--- !u!114 &6817741113012073701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986966414658686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a9a67b87003064abeb46382ab0fd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEquipped: {fileID: 0}
 --- !u!1 &4801986967434105312
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +386,7 @@ GameObject:
   - component: {fileID: 4801986967434105315}
   - component: {fileID: 4801986967434105314}
   - component: {fileID: 477030479}
+  - component: {fileID: 2688913019381058485}
   m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
@@ -424,9 +473,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  partType: 2
   frameRate: 6
   SpriteLocation: Assets/Sprites/Player/char_a_p1/4har/char_a_p1_4har_bob1_v01.png
   spriteArray: []
+  idleSprite: {fileID: 0}
   northSprites: []
   eastSprites: []
   southSprites: []
@@ -436,6 +487,19 @@ MonoBehaviour:
   EastSpritesOffset: 48
   SouthSpritesOffset: 32
   WestSpritesOffset: 56
+--- !u!114 &2688913019381058485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986967434105312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a9a67b87003064abeb46382ab0fd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEquipped: {fileID: 0}
 --- !u!1 &4801986967604170157
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +512,8 @@ GameObject:
   - component: {fileID: 143489955}
   - component: {fileID: 143489954}
   - component: {fileID: 143489956}
+  - component: {fileID: 723347688}
+  - component: {fileID: 723347689}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -534,3 +600,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 200
+  playerInventory: {fileID: 723347689}
+  inventoryPanel: {fileID: 0}
+  panelContent: {fileID: 0}
+  itemPrefab: {fileID: 6171160163849038052, guid: d61ebb7b0749fab4c9e3e299d185ebb4, type: 3}
+  uiManager: {fileID: 0}
+  shopItems: []
+--- !u!114 &723347688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986967604170157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ed1792efdf8984aa4199728da68bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 2
+  interactKey: 101
+--- !u!114 &723347689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801986967604170157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f707b0aa864fbd47aa8f969d994b4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currency: 999
+  items: []

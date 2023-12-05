@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     [Header("Currency")]
     public int currency = 0;
 
-    private List<GameItem> items = new List<GameItem>();
+    public List<GameItem> items = new List<GameItem>();
 
     public delegate void OnInventoryChanged();
     public OnInventoryChanged onInventoryChanged;
@@ -32,13 +32,12 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(GameItem item)
     {
-        {
-            items.Add(item);
+        items.Add(item);
+        item.isEquipped = false;
 
-            onInventoryChanged?.Invoke();
+        onInventoryChanged?.Invoke();
 
-            return true;
-        }
+        return true;
     }
     public void RemoveItem(GameItem item)
     {

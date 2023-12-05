@@ -18,3 +18,4 @@ MonoBehaviour:
   itemDescription: Fits with the adventurers!
   itemSpriteLocation: Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_fstr_v04.png
   itemPartType: 1
+  isEquipped: 0

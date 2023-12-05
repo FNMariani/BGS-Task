@@ -53,6 +53,10 @@ MonoBehaviour:
     m_Address: Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: bfcbe282ce657af49856be512f833590
+    m_Address: Assets/Sprites/Player/char_a_p1/transparentSprites.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0fe4536f779bd10499fbf319bacb3bc2, type: 2}
   m_SchemaSet:

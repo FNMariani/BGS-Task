@@ -17,11 +17,11 @@ public class InventoryUIManager : MonoBehaviour
     public InventoryUIManager uiManager;
     private GameItem item;
 
-    public Image itemIconImage;
+    /*public Image itemIconImage;
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemPriceText;
     public TextMeshProUGUI itemDescriptionText;
-    public Button buyButton;
+    public Button actionButton;*/
 
     void Start()
     {
@@ -53,11 +53,19 @@ public class InventoryUIManager : MonoBehaviour
 
                 inventoryItemObject.GetComponent<ItemUI>().itemIconImage.sprite = item.itemIcon;
                 inventoryItemObject.GetComponent<ItemUI>().itemNameText.text = item.itemName;
-                inventoryItemObject.GetComponent<ItemUI>().itemPriceText.text = "Price: " + item.itemPrice.ToString();
+                inventoryItemObject.GetComponent<ItemUI>().itemPriceText.text = "$" + item.itemPrice.ToString();
                 inventoryItemObject.GetComponent<ItemUI>().itemDescriptionText.text = item.itemDescription;
 
-                inventoryItemObject.GetComponent<ItemUI>().buyButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Equip"; //TODO: replace GetChild
-                inventoryItemObject.GetComponent<ItemUI>().buyButton.onClick.AddListener(() => playerController.Equip(item));
+                if (item.isEquipped)
+                {
+                    inventoryItemObject.GetComponent<ItemUI>().actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Unequip"; //TODO: replace GetChild
+                    inventoryItemObject.GetComponent<ItemUI>().actionButton.onClick.AddListener(() => playerController.Unequip(item));
+                }
+                else
+                {
+                    inventoryItemObject.GetComponent<ItemUI>().actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Equip"; //TODO: replace GetChild
+                    inventoryItemObject.GetComponent<ItemUI>().actionButton.onClick.AddListener(() => playerController.Equip(item));
+                }
             }
         }
     }

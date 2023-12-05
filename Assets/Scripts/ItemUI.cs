@@ -11,7 +11,7 @@ public class ItemUI : MonoBehaviour
     public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI itemPriceText;
     public TextMeshProUGUI itemDescriptionText;
-    public Button buyButton;
+    public Button actionButton;
 
     private ShopManager uiManager;
     private GameItem item;
@@ -24,17 +24,26 @@ public class ItemUI : MonoBehaviour
         itemDescriptionText.text = item.itemDescription;
     }*/
 
-    public void Initialize(ShopManager uiManager, GameItem item)
+    public void Initialize(ShopManager uiManager, GameItem item, string buttonAction)
     {
         this.uiManager = uiManager;
         this.item = item;
 
         itemIconImage.sprite = item.itemIcon;
         itemNameText.text = item.itemName;
-        itemPriceText.text = "Price: " + item.itemPrice.ToString();
+        itemPriceText.text = "$" + item.itemPrice.ToString();
         itemDescriptionText.text = item.itemDescription;
 
-        buyButton.onClick.AddListener(BuyButtonClicked);
+        actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonAction;
+
+        if(buttonAction == "Buy") 
+        {
+            actionButton.onClick.AddListener(BuyButtonClicked);
+        }
+        else if (buttonAction == "Sell")
+        {
+            actionButton.onClick.AddListener(SellButtonClicked);
+        }
     }
 
     public void BuyButtonClicked()

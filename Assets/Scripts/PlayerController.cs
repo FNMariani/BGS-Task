@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D body;
+    Rigidbody2D RB;
     Vector2 direction;
 
     public float walkSpeed;
@@ -13,9 +13,21 @@ public class PlayerController : MonoBehaviour
 
     public GameObject inventoryPanel;
 
+    public Transform panelContent;
+    public GameObject itemPrefab;
+    public ShopManager uiManager;
+
+    public List<GameItem> shopItems; //DEBUG
+
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        RB = GetComponent<Rigidbody2D>();
+
+        //DEBUG
+        foreach (GameItem item in shopItems)
+        {
+            playerInventory.AddItem(item);
+        }
     }
 
     void Update()
@@ -31,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
-        body.velocity = direction * walkSpeed * Time.fixedDeltaTime;
+        RB.velocity = direction * walkSpeed * Time.fixedDeltaTime;
     }
 
     public Vector2 GetDirection()
@@ -68,20 +80,126 @@ public class PlayerController : MonoBehaviour
 
     public void Equip(GameItem item)
     {
-        Debug.Log(item);
-
         for (int i = 0; i < transform.childCount; i++)
         {
-            // Access each child by index
             Transform childTransform = transform.GetChild(i);
-
-            // Do something with the child
-            Debug.Log("Child name: " + childTransform.name);
             if(item.itemPartType == childTransform.GetComponent<SpriteUpdater>().partType)
             {
+                //TODO Refactor this
+                if(childTransform.GetComponent<PlayerPartEquipment>().itemEquipped)
+                {
+                    childTransform.GetComponent<PlayerPartEquipment>().itemEquipped.isEquipped = false;
+                }
+                childTransform.GetComponent<PlayerPartEquipment>().itemEquipped = item;
+
+                item.isEquipped = true;
                 childTransform.GetComponent<SpriteUpdater>().UpdateSpritesAtlas(item.itemPartType, item.itemSpriteLocation);
+
+                inventoryPanel.GetComponent<InventoryUIManager>().PopulateInventoryUI(playerInventory.GetInventory());
+
+                return;
             }
-            
         }
+    }
+
+    public void Unequip(GameItem item)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform childTransform = transform.GetChild(i);
+            if (item.itemPartType == childTransform.GetComponent<SpriteUpdater>().partType)
+            {
+                item.isEquipped = false;
+                childTransform.GetComponent<SpriteUpdater>().DefaultSpritesAtlas(item.itemPartType);
+
+                inventoryPanel.GetComponent<InventoryUIManager>().PopulateInventoryUI(playerInventory.GetInventory());
+
+                return;
+            }
+        }
+    }
+
+    public void PopulateInventoryUI(List<GameItem> inventoryItems)
+    {
+        ClearInventoryUI();
+
+        foreach (GameItem item in inventoryItems)
+        {
+            GameObject itemObject = Instantiate(itemPrefab, panelContent);
+            ItemUI itemUI = itemObject.GetComponent<ItemUI>();
+
+            if (itemUI != null)
+            {
+                itemUI.Initialize(uiManager, item, "Sell");
+            }
+        }
+    }
+
+    private void ClearInventoryUI()
+    {
+        foreach (Transform child in panelContent)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    public GameObject GetBody()
+    {
+        GameObject body = transform.GetChild(0).gameObject;
+
+        //Check part by name
+        if (body == null || body.name != "Body")
+        {
+            if (body.name != "Body") Debug.LogError("Body is wrong!");
+
+            Debug.LogError("One part not found!");
+        }
+
+        return body;
+    }
+
+    public GameObject GetClothes()
+    {
+        GameObject clothes = transform.GetChild(1).gameObject;
+
+        //Check part by name
+        if (clothes == null || clothes.name != "Clothes")
+        {
+            if (clothes.name != "Clothes") Debug.LogError("Clothes are wrong!");
+
+            Debug.LogError("One part not found!");
+        }
+
+        return clothes;
+    }
+
+    public GameObject GetHair()
+    {
+        GameObject hair = transform.GetChild(2).gameObject;
+
+        //Check part by name
+        if (hair == null || hair.name != "Hair")
+        {
+            if (hair.name != "Hair") Debug.LogError("Hair is wrong!");
+
+            Debug.LogError("One part not found!");
+        }
+
+        return hair;
+    }
+
+    public GameObject GetHat()
+    {
+        GameObject hat = transform.GetChild(3).gameObject;
+
+        //Check part by name
+        if (hat == null || hat.name != "Hat")
+        {
+            if (hat.name != "Hat") Debug.LogError("Hat is wrong!");
+
+            Debug.LogError("One part not found!");
+        }
+
+        return hat;
     }
 }

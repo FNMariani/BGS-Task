@@ -30,9 +30,8 @@ public class ShopManager : MonoBehaviour
         shopCurrencyText.text = "Shop Money: " + shopkeeper.shopInventory.currency.ToString();
 
         // Update player and shop inventories
-        //playerInventoryUI.DisplayInventory(playerController.playerInventory.GetInventory());
-        //shopInventoryUI.DisplayInventory(shopkeeperController.shopInventory.GetInventory());
         shopkeeper.PopulateShopUI(shopkeeper.shopInventory.GetInventory());
+        playerController.PopulateInventoryUI(playerController.playerInventory.GetInventory());
     }
 
     public void BuyButtonClicked(GameItem item)
@@ -49,6 +48,7 @@ public class ShopManager : MonoBehaviour
 
     public void ShowShopPanel()
     {
+        UpdateUI();
         shopPanel.SetActive(true);
     }
 

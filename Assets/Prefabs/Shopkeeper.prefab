@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7428531416942020500}
+  - component: {fileID: 1344321395}
+  - component: {fileID: 1344321394}
+  - component: {fileID: 1344321396}
   m_Layer: 0
   m_Name: Shopkeeper
   m_TagString: Untagged
@@ -33,6 +36,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1344321395
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447668835510970686}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000011920929, y: 0.1422348}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.6498835, y: 1.2844696}
+  m_EdgeRadius: 0
+--- !u!114 &1344321394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447668835510970686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db93fa5e85be1d2479b2bac095b19a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelContent: {fileID: 0}
+  shopItemPrefab: {fileID: 6171160163849038052, guid: d61ebb7b0749fab4c9e3e299d185ebb4, type: 3}
+  shopItems:
+  - {fileID: 11400000, guid: 268d06ee3245125488db8687fe9fb0aa, type: 2}
+  - {fileID: 11400000, guid: eb8ae8f21f7b80b41b11e0734c724186, type: 2}
+  - {fileID: 11400000, guid: eeca8409720eccb40beebf57e822d86a, type: 2}
+  - {fileID: 11400000, guid: f7196398e95e46141a4972946bec9609, type: 2}
+  shopInventory: {fileID: 1344321396}
+  uiManager: {fileID: 0}
+--- !u!114 &1344321396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447668835510970686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f707b0aa864fbd47aa8f969d994b4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currency: 999
+  items:
+  - {fileID: 0}
 --- !u!1 &2554887589412012824
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +108,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2610575511087444533}
   - component: {fileID: 578521487404006881}
-  - component: {fileID: 3957023520057120223}
   m_Layer: 0
   m_Name: Clothes
   m_TagString: Untagged
@@ -106,7 +170,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: -912016424, guid: e1dab74fbf56a2e4b9bc4c03c3a2e1cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -118,31 +182,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3957023520057120223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554887589412012824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frameRate: 6
-  SpriteLocation: Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_boxr_v01.png
-  spriteArray: []
-  idleSprite: {fileID: 0}
-  northSprites: []
-  eastSprites: []
-  southSprites: []
-  westSprites: []
-  WalkSpritesQty: 6
-  NorthSpritesOffset: 40
-  EastSpritesOffset: 48
-  SouthSpritesOffset: 32
-  WestSpritesOffset: 56
 --- !u!1 &8031031858952555792
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1455673533881642980}
   - component: {fileID: 2870962722019189317}
-  - component: {fileID: 8166815363666937420}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -216,7 +254,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: -1233069118, guid: 3bc9cada608ba9344b29b87d5e10d2e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -228,28 +266,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8166815363666937420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8031031858952555792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f156a064fdb58445b97b9af05721ace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frameRate: 6
-  SpriteLocation: Assets/Sprites/Player/char_a_p1/char_a_p1_0bas_humn_v01.png
-  spriteArray: []
-  idleSprite: {fileID: 0}
-  northSprites: []
-  eastSprites: []
-  southSprites: []
-  westSprites: []
-  WalkSpritesQty: 6
-  NorthSpritesOffset: 40
-  EastSpritesOffset: 48
-  SouthSpritesOffset: 32
-  WestSpritesOffset: 56

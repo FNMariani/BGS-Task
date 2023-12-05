@@ -9,4 +9,5 @@ public class GameItem : ScriptableObject
     public string itemDescription;
     public string itemSpriteLocation;
     public PartType itemPartType;
+    public bool isEquipped;
 }

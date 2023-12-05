@@ -145,10 +145,34 @@ public class SpriteUpdater : MonoBehaviour
     public void UpdateSpritesAtlas(PartType _partType, string SpriteLocation)
     {
 
-        if(partType == _partType)
+        if (partType == _partType)
         {
             AsyncOperationHandle<Sprite[]> spriteHandle = Addressables.LoadAssetAsync<Sprite[]>(SpriteLocation);
             spriteHandle.Completed += handle => LoadSpritesWhenReady(handle, ref spriteArray, 0);
         }
+    }
+
+    public void DefaultSpritesAtlas(PartType _partType)
+    {
+        string SpriteLocation = "";
+
+        switch (_partType)
+        {
+            case PartType.Body:
+                SpriteLocation = "Assets/Sprites/Player/char_a_p1/char_a_p1_0bas_humn_v01.png";
+                break;
+            case PartType.Hair:
+                SpriteLocation = "Assets/Sprites/Player/char_a_p1/4har/char_a_p1_4har_bob1_v01.png";
+                break;
+            case PartType.Hat:
+                SpriteLocation = "Assets/Sprites/Player/char_a_p1/4har/char_a_p1_4har_bob1_v01.png";
+                break;
+            case PartType.Clothes:
+                SpriteLocation = "Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_boxr_v01.png";
+                break;
+        }
+
+        AsyncOperationHandle<Sprite[]> spriteHandle = Addressables.LoadAssetAsync<Sprite[]>(SpriteLocation);
+        spriteHandle.Completed += handle => LoadSpritesWhenReady(handle, ref spriteArray, 0);
     }
 }
