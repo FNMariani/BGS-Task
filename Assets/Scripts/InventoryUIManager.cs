@@ -12,9 +12,9 @@ public class InventoryUIManager : MonoBehaviour
 
     public TextMeshProUGUI playerCurrencyText;
 
-    public PlayerController playerController;
+    private PlayerController playerController;
 
-    public InventoryUIManager uiManager;
+    private InventoryUIManager uiManager;
     private GameItem item;
 
     /*public Image itemIconImage;
@@ -25,6 +25,13 @@ public class InventoryUIManager : MonoBehaviour
 
     void Start()
     {
+        //Set references
+        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        if (playerController == null) { Debug.Log("Player Controller null!"); }
+
+        uiManager = GameObject.FindWithTag("InventoryPanel").GetComponent<InventoryUIManager>();
+        if (uiManager == null) { Debug.Log("InventoryPanel null!"); }
+
         HideInventoryPanel();
 
         UpdateUI();

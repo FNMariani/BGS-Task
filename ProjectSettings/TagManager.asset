@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Shopkeeper
+  - InventoryPanel
+  - ShopPanel
+  - InventoryPanelContent_Player
+  - ShopPanelContent_Shopkeeper
+  - ShopPanelContent_Player
+  - ShopPanelContent
+  - InventoryPanelContent
   layers:
   - Default
   - TransparentFX

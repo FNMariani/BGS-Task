@@ -10,14 +10,19 @@ public class ShopManager : MonoBehaviour
 
     public TextMeshProUGUI playerCurrencyText;
     public TextMeshProUGUI shopCurrencyText;
-    //public InventoryUI playerInventoryUI;
-    //public InventoryUI shopInventoryUI;
 
-    public PlayerController playerController;
-    public Shopkeeper shopkeeper;
+    private PlayerController playerController;
+    private Shopkeeper shopkeeper;
 
     void Start()
     {
+        //Set references
+        shopkeeper = GameObject.FindWithTag("Shopkeeper").GetComponent<Shopkeeper>();
+        if (shopkeeper == null) { Debug.Log("Shopkeeper null!"); }
+
+        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        if (playerController == null) { Debug.Log("Player Controller null!"); }
+
         HideShopPanel();
 
         UpdateUI();

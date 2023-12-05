@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Shopkeeper : InteractableObject
 {
-    GameObject shopUI;
-    public Transform panelContent;
+    private Transform shopPanelContent;
     public GameObject shopItemPrefab;
 
     public List<GameItem> shopItems;
 
     public Inventory shopInventory;
 
-    public ShopManager uiManager;
+    private ShopManager uiManager;
 
     private void Start()
     {
-        //shopUI = GameObject.FindWithTag("shopUI");
+        //Set references
+        shopPanelContent = GameObject.FindWithTag("ShopPanelContent_Shopkeeper").transform;
+        if (shopPanelContent == null) { Debug.Log("ShopPanelContent_Shopkeeper null!"); }
+
+        uiManager = GameObject.FindWithTag("ShopPanel").GetComponent<ShopManager>();
+        if (uiManager == null) { Debug.Log("ShopPanel null!"); }
 
         foreach (GameItem item in shopItems)
         {
@@ -51,7 +55,7 @@ public class Shopkeeper : InteractableObject
 
         foreach (GameItem item in shopItems)
         {
-            GameObject shopItemObject = Instantiate(shopItemPrefab, panelContent);
+            GameObject shopItemObject = Instantiate(shopItemPrefab, shopPanelContent);
             ItemUI shopItemUI = shopItemObject.GetComponent<ItemUI>();
 
             if (shopItemUI != null)
@@ -68,7 +72,7 @@ public class Shopkeeper : InteractableObject
 
     private void ClearShopUI()
     {
-        foreach (Transform child in panelContent)
+        foreach (Transform child in shopPanelContent)
         {
             Destroy(child.gameObject);  
         }

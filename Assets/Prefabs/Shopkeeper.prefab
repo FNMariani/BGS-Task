@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1344321396}
   m_Layer: 0
   m_Name: Shopkeeper
-  m_TagString: Untagged
+  m_TagString: Shopkeeper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,8 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currency: 999
-  items:
-  - {fileID: 0}
+  items: []
 --- !u!1 &2554887589412012824
 GameObject:
   m_ObjectHideFlags: 0

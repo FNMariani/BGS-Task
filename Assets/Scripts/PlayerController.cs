@@ -11,16 +11,26 @@ public class PlayerController : MonoBehaviour
 
     public Inventory playerInventory;
 
-    public GameObject inventoryPanel;
+    private GameObject inventoryPanel;
 
-    public Transform panelContent;
+    private Transform inventoryPanelContent;
     public GameObject itemPrefab;
-    public ShopManager uiManager;
+    private ShopManager uiManager;
 
     public List<GameItem> shopItems; //DEBUG
 
     void Start()
     {
+        //Set references
+        inventoryPanel = GameObject.FindWithTag("InventoryPanel");
+        if (inventoryPanel == null) { Debug.Log("InventoryPanel null!"); }
+
+        inventoryPanelContent = GameObject.FindWithTag("ShopPanelContent_Player").transform;
+        if (inventoryPanelContent == null) { Debug.Log("InventoryPanelContent null!"); }
+
+        uiManager = GameObject.FindWithTag("ShopPanel").GetComponent<ShopManager>();
+        if (uiManager == null) { Debug.Log("ShopPanel null!"); }
+
         RB = GetComponent<Rigidbody2D>();
 
         //DEBUG
@@ -125,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (GameItem item in inventoryItems)
         {
-            GameObject itemObject = Instantiate(itemPrefab, panelContent);
+            GameObject itemObject = Instantiate(itemPrefab, inventoryPanelContent);
             ItemUI itemUI = itemObject.GetComponent<ItemUI>();
 
             if (itemUI != null)
@@ -137,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     private void ClearInventoryUI()
     {
-        foreach (Transform child in panelContent)
+        foreach (Transform child in inventoryPanelContent)
         {
             Destroy(child.gameObject);
         }
