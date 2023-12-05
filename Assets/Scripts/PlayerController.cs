@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     public float walkSpeed;
 
+    public Inventory playerInventory;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -28,5 +30,19 @@ public class PlayerController : MonoBehaviour
     public Vector2 GetDirection()
     {
         return direction;
+    }
+
+    public void InteractWithShop(Inventory shopInventory, GameItem item)
+    {
+        if (playerInventory.BuyItem(item))
+        {
+            //Successful purchase
+            shopInventory.SellItem(item);
+        }
+        else
+        {
+            //Purchase failed
+            Debug.LogWarning("Purchase failed.");
+        }
     }
 }
