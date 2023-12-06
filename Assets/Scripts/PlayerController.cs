@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             //Successful purchase
             shopInventory.SellItem(item);
+            GameObject.FindWithTag("MainCamera").GetComponent<AudioController>().PlayCoinSound();
         }
         else
         {
@@ -110,6 +111,7 @@ public class PlayerController : MonoBehaviour
 
     public void ToggleInventoryPanel()
     {
+        GameObject.FindWithTag("MainCamera").GetComponent<AudioController>().PlayOpenCloseSound();
         if (inventoryPanel.activeSelf)
         {
             isBusyInventory = false;
@@ -142,6 +144,8 @@ public class PlayerController : MonoBehaviour
 
                 inventoryPanel.GetComponent<InventoryUIManager>().PopulateInventoryUI(playerInventory.GetInventory());
 
+                GameObject.FindWithTag("MainCamera").GetComponent<AudioController>().PlayEquipSound();
+
                 return;
             }
         }
@@ -158,6 +162,8 @@ public class PlayerController : MonoBehaviour
                 childTransform.GetComponent<SpriteUpdater>().DefaultSpritesAtlas(item.itemType.itemPartType);
 
                 inventoryPanel.GetComponent<InventoryUIManager>().PopulateInventoryUI(playerInventory.GetInventory());
+
+                GameObject.FindWithTag("MainCamera").GetComponent<AudioController>().PlayEquipSound();
 
                 return;
             }

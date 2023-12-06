@@ -92,12 +92,16 @@ public class InventoryUIManager : MonoBehaviour
 
         inventoryPanel.SetActive(true);
 
+        GameObject.FindWithTag("MainCamera").GetComponent<AudioController>().PlayOpenCloseSound();
+
         playerController.isBusyInventory = true;
     }
 
     public void HideInventoryPanel()
     {
         inventoryPanel.SetActive(false);
+
+        GameObject.FindWithTag("MainCamera").GetComponent<AudioController>().PlayOpenCloseSound();
 
         playerController.isBusyInventory = false;
     }

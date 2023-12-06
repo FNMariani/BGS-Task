@@ -86,6 +86,7 @@ public class Shopkeeper : InteractableObject
                 }
             }
             shopInventory.BuyItem(item);
+            GameObject.FindWithTag("MainCamera").GetComponent<AudioController>().PlayCoinSound();
         }
         else
         {
