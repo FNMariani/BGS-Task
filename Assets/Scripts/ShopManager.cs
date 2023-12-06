@@ -11,8 +11,8 @@ public class ShopManager : MonoBehaviour
     public TextMeshProUGUI playerCurrencyText;
     public TextMeshProUGUI shopCurrencyText;
 
-    private PlayerController playerController;
-    private Shopkeeper shopkeeper;
+    public PlayerController playerController;
+    public Shopkeeper shopkeeper;
 
     void Start()
     {
@@ -25,29 +25,29 @@ public class ShopManager : MonoBehaviour
 
         HideShopPanel();
 
-        UpdateUI();
+        //UpdateUI();
     }
 
     public void UpdateUI()
     {
         // Update currency balances
-        playerCurrencyText.text = "Player Money: " + playerController.playerInventory.currency.ToString();
+        playerCurrencyText.text = "Player Money: " + playerController.GetPlayerInventory().currency.ToString();
         shopCurrencyText.text = "Shop Money: " + shopkeeper.shopInventory.currency.ToString();
 
         // Update player and shop inventories
         shopkeeper.PopulateShopUI(shopkeeper.shopInventory.GetInventory());
-        playerController.PopulateInventoryUI(playerController.playerInventory.GetInventory());
+        playerController.PopulateInventoryUI(playerController.GetPlayerInventory().GetInventory());
     }
 
-    public void BuyButtonClicked(GameItem item)
+    public void BuyButtonClicked(ItemInstance item)
     {
         playerController.InteractWithShop(shopkeeper.shopInventory, item);
         UpdateUI();
     }
 
-    public void SellButtonClicked(GameItem item)
+    public void SellButtonClicked(ItemInstance item)
     {
-        shopkeeper.InteractWithPlayer(playerController.playerInventory, item);
+        shopkeeper.InteractWithPlayer(playerController.GetPlayerInventory(), item);
         UpdateUI();
     }
 

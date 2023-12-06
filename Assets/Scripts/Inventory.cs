@@ -10,79 +10,84 @@ public enum PartType
     Hat
 }
 
+[System.Serializable]
+public class ItemInstance
+{
+    public GameItem itemType;
+
+    public ItemInstance(GameItem itemData)
+    {
+        itemType = itemData;
+    }
+}
+
 public class Inventory : MonoBehaviour
 {
     [Header("Currency")]
     public int currency = 0;
 
-    public List<GameItem> items = new List<GameItem>();
-
-    public delegate void OnInventoryChanged();
-    public OnInventoryChanged onInventoryChanged;
+    public GameItem newItemType;
+    public List<ItemInstance> items = new ();
 
     void Start()
     {
         ClearInventory();
+
+        //items.Add(new ItemInstance(newItemType));
     }
 
     void Update()
     {
-        
+
     }
 
-    public bool AddItem(GameItem item)
+    public bool AddItem(ItemInstance item)
     {
         items.Add(item);
-        item.isEquipped = false;
-
-        onInventoryChanged?.Invoke();
+        item.itemType.isEquipped = false;
 
         return true;
     }
-    public void RemoveItem(GameItem item)
+    public void RemoveItem(ItemInstance item)
     {
-        items.Remove(item);
-
-        onInventoryChanged?.Invoke();
+       items.Remove(item);
     }
 
     public void ClearInventory()
     {
         items.Clear();
-
-        onInventoryChanged?.Invoke();
     }
 
-    public List<GameItem> GetInventory()
+    public List<ItemInstance> GetInventory()
     {
         return items;
     }
 
-    public bool BuyItem(GameItem item)
+    public bool BuyItem(ItemInstance item)
     {
-        if (currency >= item.itemPrice)
+        if (currency >= item.itemType.itemPrice)
         {
-            currency -= item.itemPrice;
+            currency -= item.itemType.itemPrice;
             AddItem(item);
 
             return true;
         }
 
-        Debug.LogWarning("Not enough money to buy item: " + item.itemName);
+        Debug.LogWarning("Not enough money to buy item: " + item.itemType.itemName);
         return false;
     }
 
-    public bool SellItem(GameItem item)
+    public bool SellItem(ItemInstance item)
     {
         if (items.Contains(item))
         {
-            currency += item.itemPrice;
+            currency += item.itemType.itemPrice;
             RemoveItem(item);
 
             return true;
         }
 
-        Debug.LogWarning("Item not found in inventory: " + item.itemName);
+        Debug.LogWarning("Item not found in inventory: " + item.itemType.itemName);
         return false;
     }
 }

@@ -13,7 +13,7 @@ public class ItemUI : MonoBehaviour
     public Button actionButton;
 
     private ShopManager uiManager;
-    private GameItem item;
+    private ItemInstance item;
 
     /*public void UpdateUI(GameItem item)
     {
@@ -23,15 +23,15 @@ public class ItemUI : MonoBehaviour
         itemDescriptionText.text = item.itemDescription;
     }*/
 
-    public void Initialize(ShopManager uiManager, GameItem item, string buttonAction)
+    public void Initialize(ShopManager uiManager, ItemInstance item, string buttonAction)
     {
         this.uiManager = uiManager;
         this.item = item;
 
-        itemIconImage.sprite = item.itemIcon;
-        itemNameText.text = item.itemName;
-        itemPriceText.text = "$" + item.itemPrice.ToString();
-        itemDescriptionText.text = item.itemDescription;
+        itemIconImage.sprite = item.itemType.itemIcon;
+        itemNameText.text = item.itemType.itemName;
+        itemPriceText.text = "$" + item.itemType.itemPrice.ToString();
+        itemDescriptionText.text = item.itemType.itemDescription;
 
         actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = buttonAction;
 

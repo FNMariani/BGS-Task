@@ -4,39 +4,36 @@ using UnityEngine;
 
 public class Shopkeeper : InteractableObject
 {
-    private Transform shopPanelContent;
+    public Transform shopPanelContent;
     public GameObject shopItemPrefab;
 
-    public List<GameItem> shopItems;
+    public List<ItemInstance> shopItems = new ();
 
     public Inventory shopInventory;
 
-    private ShopManager uiManager;
+    public ShopManager uiManager;
 
     private void Start()
     {
         //Set references
-        shopPanelContent = GameObject.FindWithTag("ShopPanelContent_Shopkeeper").transform;
+        //shopPanelContent = GameObject.FindWithTag("ShopPanelContent_Shopkeeper").transform;
         if (shopPanelContent == null) { Debug.Log("ShopPanelContent_Shopkeeper null!"); }
 
-        uiManager = GameObject.FindWithTag("ShopPanel").GetComponent<ShopManager>();
+        //uiManager = GameObject.FindWithTag("ShopPanel").GetComponent<ShopManager>();
         if (uiManager == null) { Debug.Log("ShopPanel null!"); }
 
-        foreach (GameItem item in shopItems)
-        {
-            //DEBUG
-            //Debug.Log($"Item: {item.itemName}, Price: {item.itemPrice}");
-        }
-
         //Initialize shop inventory
-        foreach (GameItem item in shopItems)
+        foreach (ItemInstance item in shopItems)
         {
             shopInventory.AddItem(item);
         }
-
-        //DEBUG
-        //PopulateShopUI(shopItems);
     }
+
+    public void Initialize()
+    {
+        
+    }
+
     public override void Interact()
     {
         OpenShopUI();
@@ -49,24 +46,21 @@ public class Shopkeeper : InteractableObject
         PopulateShopUI(shopInventory.GetInventory());
     }
 
-    public void PopulateShopUI(List<GameItem> shopItems)
+    public void PopulateShopUI(List<ItemInstance> shopItems)
     {
         ClearShopUI();
 
-        foreach (GameItem item in shopItems)
+        foreach (ItemInstance itemInst in shopItems)
         {
+            GameItem item = itemInst.itemType;
+
             GameObject shopItemObject = Instantiate(shopItemPrefab, shopPanelContent);
             ItemUI shopItemUI = shopItemObject.GetComponent<ItemUI>();
 
             if (shopItemUI != null)
             {
-                shopItemUI.Initialize(uiManager, item, "Buy");
+                shopItemUI.Initialize(uiManager, itemInst, "Buy");
             }
-
-            /*if (shopItemUI != null)
-            {
-                shopItemUI.UpdateUI(item);
-            }*/
         }
     }
 
@@ -78,12 +72,12 @@ public class Shopkeeper : InteractableObject
         }
     }
 
-    public void InteractWithPlayer(Inventory playerInventory, GameItem item)
+    public void InteractWithPlayer(Inventory playerInventory, ItemInstance item)
     {
         if (playerInventory.SellItem(item))
         {
             //Successful sale
-            if (item.isEquipped)
+            if (item.itemType.isEquipped)
             {
                 GameObject player = GameObject.FindWithTag("Player");
                 if (player != null)

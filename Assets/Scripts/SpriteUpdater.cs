@@ -35,12 +35,11 @@ public class SpriteUpdater : MonoBehaviour
 
     void Start()
     {
-        AsyncOperationHandle<Sprite[]> spriteHandle = Addressables.LoadAssetAsync<Sprite[]>(SpriteLocation);
-        spriteHandle.Completed += handle => LoadSpritesWhenReady(handle, ref spriteArray, 0);
+        LoadSpritesWhenReady(SpriteLocation, ref spriteArray, 0);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        //Get player reference
+        // Get player reference
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
@@ -56,43 +55,40 @@ public class SpriteUpdater : MonoBehaviour
         //DEBUG
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            UpdateSpritesAtlas(PartType.Clothes, "Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_fstr_v04.png");
+            UpdateSpritesAtlas(PartType.Clothes, "Sprites/char_a_p1/1out/char_a_p1_1out_fstr_v04");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            UpdateSpritesAtlas(PartType.Hat, "Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pnty_v04.png");
+            UpdateSpritesAtlas(PartType.Hat, "Sprites/char_a_p1/5hat/char_a_p1_5hat_pnty_v04");
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            UpdateSpritesAtlas(PartType.Clothes, "Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_boxr_v01.png");
+            UpdateSpritesAtlas(PartType.Clothes, "Sprites/char_a_p1/1out/char_a_p1_1out_boxr_v01");
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            UpdateSpritesAtlas(PartType.Hat, "Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png");
+            UpdateSpritesAtlas(PartType.Hat, "Sprites/char_a_p1/5hat/char_a_p1_5hat_pfht_v04");
         }
     }
 
-    void LoadSpritesWhenReady(AsyncOperationHandle<Sprite[]> handleToCheck, ref Sprite[] spriteArray, int spriteIndex)
+    void LoadSpritesWhenReady(string path, ref Sprite[] sprites, int spriteIndex)
     {
-        if (handleToCheck.Status == AsyncOperationStatus.Succeeded)
+        sprites = Resources.LoadAll<Sprite>(path);
+
+        northSprites.Clear();
+        eastSprites.Clear();
+        southSprites.Clear();
+        westSprites.Clear();
+
+        for (int i = 0; i < WalkSpritesQty; i++)
         {
-            spriteArray = handleToCheck.Result;
-
-            northSprites.Clear();
-            eastSprites.Clear();
-            southSprites.Clear();
-            westSprites.Clear();
-
-            for (int i = 0; i < WalkSpritesQty; i++)
-            {
-                northSprites.Add(spriteArray[i + NorthSpritesOffset]);
-                eastSprites.Add(spriteArray[i + EastSpritesOffset]);
-                southSprites.Add(spriteArray[i + SouthSpritesOffset]);
-                westSprites.Add(spriteArray[i + WestSpritesOffset]);
-            }
-
-            idleSprite = spriteArray[0];
+            northSprites.Add(sprites[i + NorthSpritesOffset]);
+            eastSprites.Add(sprites[i + EastSpritesOffset]);
+            southSprites.Add(sprites[i + SouthSpritesOffset]);
+            westSprites.Add(sprites[i + WestSpritesOffset]);
         }
+
+        idleSprite = sprites[0];
     }
 
     void SetSprites()
@@ -142,37 +138,34 @@ public class SpriteUpdater : MonoBehaviour
         return selectedSprites;
     }
 
-    public void UpdateSpritesAtlas(PartType _partType, string SpriteLocation)
+    public void UpdateSpritesAtlas(PartType _partType, string path)
     {
-
         if (partType == _partType)
         {
-            AsyncOperationHandle<Sprite[]> spriteHandle = Addressables.LoadAssetAsync<Sprite[]>(SpriteLocation);
-            spriteHandle.Completed += handle => LoadSpritesWhenReady(handle, ref spriteArray, 0);
+            LoadSpritesWhenReady(path, ref spriteArray, 0);
         }
     }
 
     public void DefaultSpritesAtlas(PartType _partType)
     {
-        string SpriteLocation = "";
+        string path = "";
 
         switch (_partType)
         {
             case PartType.Body:
-                SpriteLocation = "Assets/Sprites/Player/char_a_p1/char_a_p1_0bas_humn_v01.png";
+                path = "Sprites/char_a_p1/char_a_p1_0bas_humn_v01";
                 break;
             case PartType.Hair:
-                SpriteLocation = "Assets/Sprites/Player/char_a_p1/4har/char_a_p1_4har_bob1_v01.png";
+                path = "Sprites/char_a_p1/4har/char_a_p1_4har_bob1_v01";
                 break;
             case PartType.Hat:
-                SpriteLocation = "Assets/Sprites/Player/char_a_p1/4har/char_a_p1_4har_bob1_v01.png";
+                path = "Sprites/char_a_p1/4har/char_a_p1_4har_bob1_v01";
                 break;
             case PartType.Clothes:
-                SpriteLocation = "Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_boxr_v01.png";
+                path = "Sprites/char_a_p1/1out/char_a_p1_1out_boxr_v01";
                 break;
         }
 
-        AsyncOperationHandle<Sprite[]> spriteHandle = Addressables.LoadAssetAsync<Sprite[]>(SpriteLocation);
-        spriteHandle.Completed += handle => LoadSpritesWhenReady(handle, ref spriteArray, 0);
+        LoadSpritesWhenReady(path, ref spriteArray, 0);
     }
 }

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Clothes_02
   m_EditorClassIdentifier: 
   itemName: Blue Clothes
-  itemIcon: {fileID: -912016424, guid: e1dab74fbf56a2e4b9bc4c03c3a2e1cc, type: 3}
+  itemIcon: {fileID: -912016424, guid: 779a1551f729ab144a00af3fd0a3c049, type: 3}
   itemPrice: 250
   itemDescription: Fits with the sorcerer!
-  itemSpriteLocation: Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_pfpn_v04.png
+  itemSpriteLocation: Sprites/char_a_p1/1out/char_a_p1_1out_pfpn_v04
   itemPartType: 1
   isEquipped: 0

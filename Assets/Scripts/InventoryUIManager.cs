@@ -34,28 +34,29 @@ public class InventoryUIManager : MonoBehaviour
 
         HideInventoryPanel();
 
-        UpdateUI();
+        //UpdateUI();
     }
 
     public void UpdateUI()
     {
-        playerCurrencyText.text = "Player Money: " + playerController.playerInventory.currency.ToString();
+        playerCurrencyText.text = "Player Money: " + playerController.GetPlayerInventory().currency.ToString();
 
-        PopulateInventoryUI(playerController.playerInventory.GetInventory());
+        PopulateInventoryUI(playerController.GetPlayerInventory().GetInventory());
     }
 
-    public void PopulateInventoryUI(List<GameItem> inventoryItems)
+    public void PopulateInventoryUI(List<ItemInstance> inventoryItems)
     {
         ClearInventoryUI();
 
-        foreach (GameItem item in inventoryItems)
+        foreach (ItemInstance itemIns in inventoryItems)
         {
+            GameItem item = itemIns.itemType;
+
             GameObject inventoryItemObject = Instantiate(shopItemPrefab, panelContent);
             ItemUI shopItemUI = inventoryItemObject.GetComponent<ItemUI>();
 
             if (shopItemUI != null)
             {
-                //shopItemUI.Initialize(this, item);
                 this.item = item;
 
                 inventoryItemObject.GetComponent<ItemUI>().itemIconImage.sprite = item.itemIcon;
@@ -66,7 +67,7 @@ public class InventoryUIManager : MonoBehaviour
                 if (item.isEquipped)
                 {
                     inventoryItemObject.GetComponent<ItemUI>().actionButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Unequip"; //TODO: replace GetChild
-                    inventoryItemObject.GetComponent<ItemUI>().actionButton.onClick.AddListener(() => playerController.Unequip(item));
+                    inventoryItemObject.GetComponent<ItemUI>().actionButton.onClick.AddListener(() => playerController.Unequip(itemIns));
                 }
                 else
                 {

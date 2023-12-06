@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -1948625972, guid: 1d8a8b07fb03f6448896fea69a1d1741, type: 3}
+  m_Sprite: {fileID: -1948625972, guid: a61debd93ff1a1a42990eaf01c227fc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 3
   frameRate: 6
-  SpriteLocation: Assets/Sprites/Player/char_a_p1/transparentSprites.png
+  SpriteLocation: Sprites/char_a_p1/5hat/char_a_p1_5hat_pfht_v04
   spriteArray: []
   idleSprite: {fileID: 0}
   northSprites: []
@@ -200,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1233069118, guid: 3bc9cada608ba9344b29b87d5e10d2e0, type: 3}
+  m_Sprite: {fileID: -1233069118, guid: b9b2a17667de00943873dc46ec09cc8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 0
   frameRate: 6
-  SpriteLocation: Assets/Sprites/Player/char_a_p1/char_a_p1_0bas_humn_v01.png
+  SpriteLocation: Sprites/char_a_p1/char_a_p1_0bas_humn_v01
   spriteArray: []
   idleSprite: {fileID: 0}
   northSprites: []
@@ -325,7 +325,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -32406062, guid: 1d8a8b07fb03f6448896fea69a1d1741, type: 3}
+  m_Sprite: {fileID: -32406062, guid: a61debd93ff1a1a42990eaf01c227fc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 1
   frameRate: 6
-  SpriteLocation: Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_boxr_v01.png
+  SpriteLocation: Sprites/char_a_p1/1out/char_a_p1_1out_boxr_v01
   spriteArray: []
   idleSprite: {fileID: 0}
   northSprites: []
@@ -450,7 +450,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 191326895, guid: 849bc251437e306459e7803def9387fc, type: 3}
+  m_Sprite: {fileID: 191326895, guid: 406a56fde50f22f48bae4dddde0f9070, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -475,7 +475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 2
   frameRate: 6
-  SpriteLocation: Assets/Sprites/Player/char_a_p1/4har/char_a_p1_4har_bob1_v01.png
+  SpriteLocation: Sprites/char_a_p1/4har/char_a_p1_4har_bob1_v01
   spriteArray: []
   idleSprite: {fileID: 0}
   northSprites: []
@@ -602,7 +602,7 @@ MonoBehaviour:
   walkSpeed: 200
   playerInventory: {fileID: 723347689}
   inventoryPanel: {fileID: 0}
-  panelContent: {fileID: 0}
+  inventoryPanelContent: {fileID: 0}
   itemPrefab: {fileID: 6171160163849038052, guid: d61ebb7b0749fab4c9e3e299d185ebb4, type: 3}
   uiManager: {fileID: 0}
   shopItems: []
@@ -633,4 +633,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currency: 999
+  newItemType: {fileID: 0}
   items: []

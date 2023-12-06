@@ -11,15 +11,46 @@ public class PlayerController : MonoBehaviour
 
     public Inventory playerInventory;
 
-    private GameObject inventoryPanel;
+    public GameObject inventoryPanel;
 
-    private Transform inventoryPanelContent;
+    public Transform inventoryPanelContent;
     public GameObject itemPrefab;
-    private ShopManager uiManager;
+    public ShopManager uiManager;
 
-    public List<GameItem> shopItems; //DEBUG
+    public List<ItemInstance> shopItems; //DEBUG
 
     void Start()
+    {
+        //Set references
+        /*inventoryPanel = GameObject.FindWithTag("InventoryPanel");*/
+        if (inventoryPanel == null) { Debug.Log("InventoryPanel null!"); }
+
+        //inventoryPanelContent = GameObject.FindWithTag("ShopPanelContent_Player").transform;
+        if (inventoryPanelContent == null) { Debug.Log("InventoryPanelContent null!"); }
+
+        //uiManager = GameObject.FindWithTag("ShopPanel").GetComponent<ShopManager>();
+        if (uiManager == null) { Debug.Log("ShopPanel null!"); }
+
+        RB = GetComponent<Rigidbody2D>();
+        //playerInventory = GetComponent<Inventory>();
+        //playerInventory = gameObject.AddComponent(typeof(Inventory)) as Inventory;
+
+        //SphereCollider sc = gameObject.AddComponent(typeof(SphereCollider)) as SphereCollider;
+
+        //DEBUG
+        int i = 0;
+        foreach (ItemInstance item in shopItems)
+        {
+            Debug.Log(item.itemType.itemName);
+            Debug.Log(playerInventory.AddItem(item));
+            Debug.Log(playerInventory.GetInventory()[0]);
+            Debug.Log(playerInventory.GetInventory().Count);
+            //playerInventory.GetInventory()[i] = item;
+            i++;
+        }
+    }
+
+    public void SetReferences(GameObject canvas)
     {
         //Set references
         inventoryPanel = GameObject.FindWithTag("InventoryPanel");
@@ -30,14 +61,6 @@ public class PlayerController : MonoBehaviour
 
         uiManager = GameObject.FindWithTag("ShopPanel").GetComponent<ShopManager>();
         if (uiManager == null) { Debug.Log("ShopPanel null!"); }
-
-        RB = GetComponent<Rigidbody2D>();
-
-        //DEBUG
-        foreach (GameItem item in shopItems)
-        {
-            playerInventory.AddItem(item);
-        }
     }
 
     void Update()
@@ -53,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
-        RB.velocity = direction * walkSpeed * Time.fixedDeltaTime;
+        if(RB  != null) RB.velocity = direction * walkSpeed * Time.fixedDeltaTime;
     }
 
     public Vector2 GetDirection()
@@ -61,7 +84,7 @@ public class PlayerController : MonoBehaviour
         return direction;
     }
 
-    public void InteractWithShop(Inventory shopInventory, GameItem item)
+    public void InteractWithShop(Inventory shopInventory, ItemInstance item)
     {
         if (playerInventory.BuyItem(item))
         {
@@ -112,15 +135,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Unequip(GameItem item)
+    public void Unequip(ItemInstance item)
     {
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform childTransform = transform.GetChild(i);
-            if (item.itemPartType == childTransform.GetComponent<SpriteUpdater>().partType)
+            if (item.itemType.itemPartType == childTransform.GetComponent<SpriteUpdater>().partType)
             {
-                item.isEquipped = false;
-                childTransform.GetComponent<SpriteUpdater>().DefaultSpritesAtlas(item.itemPartType);
+                item.itemType.isEquipped = false;
+                childTransform.GetComponent<SpriteUpdater>().DefaultSpritesAtlas(item.itemType.itemPartType);
 
                 inventoryPanel.GetComponent<InventoryUIManager>().PopulateInventoryUI(playerInventory.GetInventory());
 
@@ -129,18 +152,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void PopulateInventoryUI(List<GameItem> inventoryItems)
+    public void PopulateInventoryUI(List<ItemInstance> inventoryItems)
     {
         ClearInventoryUI();
 
-        foreach (GameItem item in inventoryItems)
+        foreach (ItemInstance itemInst in inventoryItems)
         {
+            GameItem item = itemInst.itemType;
+
             GameObject itemObject = Instantiate(itemPrefab, inventoryPanelContent);
             ItemUI itemUI = itemObject.GetComponent<ItemUI>();
 
             if (itemUI != null)
             {
-                itemUI.Initialize(uiManager, item, "Sell");
+                itemUI.Initialize(uiManager, itemInst, "Sell");
             }
         }
     }
@@ -151,6 +176,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+
+    public Inventory GetPlayerInventory()
+    {
+        return playerInventory;
     }
 
     public GameObject GetBody()

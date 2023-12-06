@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Clothes_01
   m_EditorClassIdentifier: 
   itemName: Yellow Clothes
-  itemIcon: {fileID: 1461901525, guid: 8a12367ae866a544bae096cf781842eb, type: 3}
+  itemIcon: {fileID: 1461901525, guid: 37257f779f4d3c049a040c6523bc891f, type: 3}
   itemPrice: 200
   itemDescription: Fits with the adventurers!
-  itemSpriteLocation: Assets/Sprites/Player/char_a_p1/1out/char_a_p1_1out_fstr_v04.png
+  itemSpriteLocation: Sprites/char_a_p1/1out/char_a_p1_1out_fstr_v04
   itemPartType: 1
   isEquipped: 0

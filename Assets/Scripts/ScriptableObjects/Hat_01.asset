@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Hat_01
   m_EditorClassIdentifier: 
   itemName: Common Hat
-  itemIcon: {fileID: -38696487, guid: c02ffc6641e90c147931ce01e918144a, type: 3}
+  itemIcon: {fileID: -38696487, guid: 4e7f727e599276e4cb0261a6ee056b08, type: 3}
   itemPrice: 100
   itemDescription: Fits with the common!
-  itemSpriteLocation: Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pfht_v04.png
+  itemSpriteLocation: Sprites/char_a_p1/5hat/char_a_p1_5hat_pfht_v04
   itemPartType: 3
   isEquipped: 0

@@ -74,13 +74,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db93fa5e85be1d2479b2bac095b19a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelContent: {fileID: 0}
+  shopPanelContent: {fileID: 0}
   shopItemPrefab: {fileID: 6171160163849038052, guid: d61ebb7b0749fab4c9e3e299d185ebb4, type: 3}
   shopItems:
-  - {fileID: 11400000, guid: 268d06ee3245125488db8687fe9fb0aa, type: 2}
-  - {fileID: 11400000, guid: eb8ae8f21f7b80b41b11e0734c724186, type: 2}
-  - {fileID: 11400000, guid: eeca8409720eccb40beebf57e822d86a, type: 2}
-  - {fileID: 11400000, guid: f7196398e95e46141a4972946bec9609, type: 2}
+  - itemType: {fileID: 11400000, guid: 268d06ee3245125488db8687fe9fb0aa, type: 2}
+  - itemType: {fileID: 11400000, guid: eb8ae8f21f7b80b41b11e0734c724186, type: 2}
+  - itemType: {fileID: 11400000, guid: eeca8409720eccb40beebf57e822d86a, type: 2}
+  - itemType: {fileID: 11400000, guid: f7196398e95e46141a4972946bec9609, type: 2}
   shopInventory: {fileID: 1344321396}
   uiManager: {fileID: 0}
 --- !u!114 &1344321396
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currency: 999
+  newItemType: {fileID: 0}
   items: []
 --- !u!1 &2554887589412012824
 GameObject:
@@ -170,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -912016424, guid: e1dab74fbf56a2e4b9bc4c03c3a2e1cc, type: 3}
+  m_Sprite: {fileID: -912016424, guid: 779a1551f729ab144a00af3fd0a3c049, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -254,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: -1233069118, guid: 3bc9cada608ba9344b29b87d5e10d2e0, type: 3}
+  m_Sprite: {fileID: -1233069118, guid: b9b2a17667de00943873dc46ec09cc8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

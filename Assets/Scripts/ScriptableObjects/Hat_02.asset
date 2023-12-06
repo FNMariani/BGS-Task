@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Hat_02
   m_EditorClassIdentifier: 
   itemName: Mage Hat
-  itemIcon: {fileID: -1382673428, guid: 2f7ce22c451717b4fadc5e2805c6db36, type: 3}
+  itemIcon: {fileID: -1382673428, guid: a83875e0d2522cf44a5444b27e72ed05, type: 3}
   itemPrice: 150
   itemDescription: Cool!
-  itemSpriteLocation: Assets/Sprites/Player/char_a_p1/5hat/char_a_p1_5hat_pnty_v04.png
+  itemSpriteLocation: Sprites/char_a_p1/5hat/char_a_p1_5hat_pnty_v04
   itemPartType: 3
   isEquipped: 0
