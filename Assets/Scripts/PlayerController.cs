@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,14 @@ public class PlayerController : MonoBehaviour
 
     public List<ItemInstance> shopItems; //DEBUG
 
+    public bool isBusyInventory = false;
+    public bool isBusyShopping = false;
+
+    /// <summary>
+    /// East | West | North | South
+    /// </summary>
+    public int lastDirection = -1;
+
     void Start()
     {
         //Set references
@@ -35,18 +44,9 @@ public class PlayerController : MonoBehaviour
         //playerInventory = GetComponent<Inventory>();
         //playerInventory = gameObject.AddComponent(typeof(Inventory)) as Inventory;
 
-        //SphereCollider sc = gameObject.AddComponent(typeof(SphereCollider)) as SphereCollider;
-
-        //DEBUG
-        int i = 0;
         foreach (ItemInstance item in shopItems)
         {
-            Debug.Log(item.itemType.itemName);
-            Debug.Log(playerInventory.AddItem(item));
-            Debug.Log(playerInventory.GetInventory()[0]);
-            Debug.Log(playerInventory.GetInventory().Count);
-            //playerInventory.GetInventory()[i] = item;
-            i++;
+            playerInventory.AddItem(item);
         }
     }
 
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //DEBUG
-        if (Input.GetKeyDown(KeyCode.I))
+        if (!isBusyShopping && Input.GetKeyDown(KeyCode.I))
         {
             ToggleInventoryPanel();
         }
@@ -74,9 +74,19 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-
-        if(RB  != null) RB.velocity = direction * walkSpeed * Time.fixedDeltaTime;
+        if (RB != null)
+        {
+            if (!isBusyInventory && !isBusyShopping)
+            {
+                direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+                RB.velocity = direction * walkSpeed * Time.fixedDeltaTime;
+            }
+            else
+            {
+                direction = Vector2.zero;
+                RB.velocity = Vector2.zero;
+            }
+        }
     }
 
     public Vector2 GetDirection()
@@ -100,13 +110,15 @@ public class PlayerController : MonoBehaviour
 
     public void ToggleInventoryPanel()
     {
-        //inventoryPanel.SetActive(!inventoryPanel.activeSelf);
-        if(inventoryPanel.activeSelf)
+        if (inventoryPanel.activeSelf)
         {
+            isBusyInventory = false;
             inventoryPanel.GetComponent<InventoryUIManager>().HideInventoryPanel();
         }
         else
         {
+            isBusyInventory = true;
+            direction = new Vector2(0, -1);
             inventoryPanel.GetComponent<InventoryUIManager>().ShowInventoryPanel();
         }
     }

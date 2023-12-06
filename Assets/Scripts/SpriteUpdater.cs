@@ -20,7 +20,10 @@ public class SpriteUpdater : MonoBehaviour
     public string SpriteLocation;
     public Sprite[] spriteArray;
 
-    public Sprite idleSprite;
+    public int idleNorthSprite;
+    public int idleEastSprite;
+    public int idleSouthSprite;
+    public int idleWestSprite;
     public List<Sprite> northSprites;
     public List<Sprite> eastSprites;
     public List<Sprite> southSprites;
@@ -88,7 +91,7 @@ public class SpriteUpdater : MonoBehaviour
             westSprites.Add(sprites[i + WestSpritesOffset]);
         }
 
-        idleSprite = sprites[0];
+        southSprites[idleSouthSprite] = sprites[0];
     }
 
     void SetSprites()
@@ -117,22 +120,29 @@ public class SpriteUpdater : MonoBehaviour
         if (direction.x > 0)
         {
             selectedSprites = eastSprites;
+            playerController.lastDirection = 1; //East
         }
         else if (direction.x < 0)
         {
             selectedSprites = westSprites;
+            playerController.lastDirection = 2; //West
         }
         else if (direction.y > 0)
         {
             selectedSprites = northSprites;
+            playerController.lastDirection = 3; //North
         }
         else if (direction.y < 0)
         {
             selectedSprites = southSprites;
+            playerController.lastDirection = 4; //South
         }
         else
         {
-            spriteRenderer.sprite = idleSprite;
+            if(playerController.lastDirection == 1) spriteRenderer.sprite = spriteArray[idleEastSprite];
+            if(playerController.lastDirection == 2) spriteRenderer.sprite = spriteArray[idleWestSprite];
+            if(playerController.lastDirection == 3) spriteRenderer.sprite = spriteArray[idleNorthSprite];
+            if(playerController.lastDirection == 4) spriteRenderer.sprite = spriteArray[idleSouthSprite];
         }
 
         return selectedSprites;

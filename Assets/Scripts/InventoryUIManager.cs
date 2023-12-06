@@ -91,10 +91,14 @@ public class InventoryUIManager : MonoBehaviour
         UpdateUI();
 
         inventoryPanel.SetActive(true);
+
+        playerController.isBusyInventory = true;
     }
 
     public void HideInventoryPanel()
     {
         inventoryPanel.SetActive(false);
+
+        playerController.isBusyInventory = false;
     }
 }

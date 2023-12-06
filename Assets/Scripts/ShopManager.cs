@@ -55,10 +55,14 @@ public class ShopManager : MonoBehaviour
     {
         UpdateUI();
         shopPanel.SetActive(true);
+
+        playerController.isBusyShopping = true;
     }
 
     public void HideShopPanel()
     {
         shopPanel.SetActive(false);
+
+        playerController.isBusyShopping = false;
     }
 }
