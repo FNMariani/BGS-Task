@@ -29,6 +29,42 @@ public class PlayerInteractionSystem : MonoBehaviour
         Vector2 raycastDirection = GetDirectionFromPlayer();
         Vector2 raycastOrigin = (Vector2)transform.position + raycastDirection * 1.0f;
         Debug.DrawRay(raycastOrigin, raycastDirection * interactionRange, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, raycastDirection, interactionRange);
+
+        if (hit.collider != null)
+        {
+            InteractableObject interactableObject = hit.collider.GetComponent<InteractableObject>();
+
+            if (interactableObject != null)
+            {
+                interactableObject.ShowInteract();
+            }
+            else
+            {
+                CheckInteractables();
+            }
+        }
+        else
+        {
+            CheckInteractables();
+        }
+    }
+
+    void CheckInteractables()
+    {
+        GameObject[] emotes = GameObject.FindGameObjectsWithTag("Emote");
+
+        foreach (GameObject emote in emotes)
+        {
+            emote.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        GameObject[] signs = GameObject.FindGameObjectsWithTag("Sign");
+
+        foreach (GameObject sign in signs)
+        {
+            sign.SetActive(false);
+        }
     }
 
     void TryInteract()

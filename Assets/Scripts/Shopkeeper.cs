@@ -13,6 +13,8 @@ public class Shopkeeper : InteractableObject
 
     public ShopManager uiManager;
 
+    public GameObject emote;
+
     private void Start()
     {
         //Set references
@@ -29,14 +31,14 @@ public class Shopkeeper : InteractableObject
         }
     }
 
-    public void Initialize()
-    {
-        
-    }
-
     public override void Interact()
     {
         OpenShopUI();
+    }
+
+    public override void ShowInteract()
+    {
+        emote.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     private void OpenShopUI()

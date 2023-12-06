@@ -24,15 +24,13 @@ public class ShopManager : MonoBehaviour
         if (playerController == null) { Debug.Log("Player Controller null!"); }
 
         HideShopPanel();
-
-        //UpdateUI();
     }
 
     public void UpdateUI()
     {
         // Update currency balances
-        playerCurrencyText.text = "Player Money: " + playerController.GetPlayerInventory().currency.ToString();
-        shopCurrencyText.text = "Shop Money: " + shopkeeper.shopInventory.currency.ToString();
+        playerCurrencyText.text = "Player Money: $" + playerController.GetPlayerInventory().currency.ToString();
+        shopCurrencyText.text = "Shop Money: $" + shopkeeper.shopInventory.currency.ToString();
 
         // Update player and shop inventories
         shopkeeper.PopulateShopUI(shopkeeper.shopInventory.GetInventory());

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public GameObject itemPrefab;
     public ShopManager uiManager;
 
-    public List<ItemInstance> shopItems; //DEBUG
+    public List<ItemInstance> shopItems;
 
     public bool isBusyInventory = false;
     public bool isBusyShopping = false;
@@ -41,8 +41,6 @@ public class PlayerController : MonoBehaviour
         if (uiManager == null) { Debug.Log("ShopPanel null!"); }
 
         RB = GetComponent<Rigidbody2D>();
-        //playerInventory = GetComponent<Inventory>();
-        //playerInventory = gameObject.AddComponent(typeof(Inventory)) as Inventory;
 
         foreach (ItemInstance item in shopItems)
         {
@@ -50,22 +48,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void SetReferences(GameObject canvas)
-    {
-        //Set references
-        inventoryPanel = GameObject.FindWithTag("InventoryPanel");
-        if (inventoryPanel == null) { Debug.Log("InventoryPanel null!"); }
-
-        inventoryPanelContent = GameObject.FindWithTag("ShopPanelContent_Player").transform;
-        if (inventoryPanelContent == null) { Debug.Log("InventoryPanelContent null!"); }
-
-        uiManager = GameObject.FindWithTag("ShopPanel").GetComponent<ShopManager>();
-        if (uiManager == null) { Debug.Log("ShopPanel null!"); }
-    }
-
     void Update()
     {
-        //DEBUG
         if (!isBusyShopping && Input.GetKeyDown(KeyCode.I))
         {
             ToggleInventoryPanel();

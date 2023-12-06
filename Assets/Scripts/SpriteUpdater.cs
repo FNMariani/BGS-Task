@@ -54,24 +54,6 @@ public class SpriteUpdater : MonoBehaviour
     {
         playerDirectionRef = playerController.GetDirection();
         SetSprites();
-
-        //DEBUG
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            UpdateSpritesAtlas(PartType.Clothes, "Sprites/char_a_p1/1out/char_a_p1_1out_fstr_v04");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            UpdateSpritesAtlas(PartType.Hat, "Sprites/char_a_p1/5hat/char_a_p1_5hat_pnty_v04");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            UpdateSpritesAtlas(PartType.Clothes, "Sprites/char_a_p1/1out/char_a_p1_1out_boxr_v01");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            UpdateSpritesAtlas(PartType.Hat, "Sprites/char_a_p1/5hat/char_a_p1_5hat_pfht_v04");
-        }
     }
 
     void LoadSpritesWhenReady(string path, ref Sprite[] sprites, int spriteIndex)

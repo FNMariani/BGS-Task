@@ -17,12 +17,6 @@ public class InventoryUIManager : MonoBehaviour
     private InventoryUIManager uiManager;
     private GameItem item;
 
-    /*public Image itemIconImage;
-    public TextMeshProUGUI itemNameText;
-    public TextMeshProUGUI itemPriceText;
-    public TextMeshProUGUI itemDescriptionText;
-    public Button actionButton;*/
-
     void Start()
     {
         //Set references
@@ -33,13 +27,11 @@ public class InventoryUIManager : MonoBehaviour
         if (uiManager == null) { Debug.Log("InventoryPanel null!"); }
 
         HideInventoryPanel();
-
-        //UpdateUI();
     }
 
     public void UpdateUI()
     {
-        playerCurrencyText.text = "Player Money: " + playerController.GetPlayerInventory().currency.ToString();
+        playerCurrencyText.text = "Player Money: $" + playerController.GetPlayerInventory().currency.ToString();
 
         PopulateInventoryUI(playerController.GetPlayerInventory().GetInventory());
     }

@@ -32,8 +32,6 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         ClearInventory();
-
-        //items.Add(new ItemInstance(newItemType));
     }
 
     void Update()

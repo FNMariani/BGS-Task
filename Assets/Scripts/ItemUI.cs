@@ -15,14 +15,6 @@ public class ItemUI : MonoBehaviour
     private ShopManager uiManager;
     private ItemInstance item;
 
-    /*public void UpdateUI(GameItem item)
-    {
-        itemIconImage.sprite = item.itemIcon;
-        itemNameText.text = item.itemName;
-        itemPriceText.text = "Price: " + item.itemPrice.ToString();
-        itemDescriptionText.text = item.itemDescription;
-    }*/
-
     public void Initialize(ShopManager uiManager, ItemInstance item, string buttonAction)
     {
         this.uiManager = uiManager;

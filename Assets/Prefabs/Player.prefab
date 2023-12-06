@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partType: 3
   frameRate: 6
-  SpriteLocation: Sprites/char_a_p1/1out/char_a_p1_1out_boxr_v01
+  SpriteLocation: Sprites/char_a_p1/transparentSprites
   spriteArray: []
   idleNorthSprite: 8
   idleEastSprite: 16

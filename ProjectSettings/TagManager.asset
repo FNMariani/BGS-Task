@@ -12,6 +12,8 @@ TagManager:
   - ShopPanelContent_Player
   - ShopPanelContent
   - InventoryPanelContent
+  - Emote
+  - Sign
   layers:
   - Default
   - TransparentFX

@@ -7,4 +7,8 @@ public class InteractableObject : MonoBehaviour
     public virtual void Interact()
     {
     }
+
+    public virtual void ShowInteract()
+    {
+    }
 }
